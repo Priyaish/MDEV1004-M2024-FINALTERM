@@ -1,7 +1,7 @@
 
 {
-  "name": "ice6",
-  "version": "0.0.6",
+  "name": "finalterm",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "start": "node server.js"
