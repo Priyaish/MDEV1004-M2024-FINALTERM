@@ -10,18 +10,18 @@ import {
 const router = express.Router();
 
 // Route: GET /api/buildings
-router.get('/buildings', DisplayBuildingList);
+router.get('/building', DisplayBuildingList);
 
 // Route: GET /api/buildings/:id
-router.get('/buildings/:id', DisplayBuildingById);
+router.get('/building/:id', DisplayBuildingById);
 
 // Route: POST /api/buildings
-router.post('/buildings', AddBuilding);
+router.post('/building', AddBuilding);
 
 // Route: PUT /api/buildings/:id
-router.put('/buildings/:id', UpdateBuilding);
+router.put('/building/:id', UpdateBuilding);
 
 // Route: DELETE /api/buildings/:id
-router.delete('/buildings/:id', DeleteBuilding);
+router.delete('/building/:id', DeleteBuilding);
 
 export default router;
