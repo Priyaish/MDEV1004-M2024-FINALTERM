@@ -1,4 +1,6 @@
 import express from 'express';
+const router = express.Router();
+import passport from 'passport';
 import {
   DisplayBuildingList,
   DisplayBuildingById,
@@ -7,21 +9,19 @@ import {
   DeleteBuilding
 } from '../Controllers/building';
 
-const router = express.Router();
 
-// Route: GET /api/buildings
-router.get('/building', DisplayBuildingList);
 
-// Route: GET /api/buildings/:id
-router.get('/building/:id', DisplayBuildingById);
+/* List of building Routes (endpoints) */
 
-// Route: POST /api/buildings
-router.post('/building', AddBuilding);
 
-// Route: PUT /api/buildings/:id
-router.put('/building/:id', UpdateBuilding);
+router.get('/list', (req, res, next) => {  DisplayBuildingList(req, res, next); });
 
-// Route: DELETE /api/buildings/:id
-router.delete('/building/:id', DeleteBuilding);
+router.get('/find/:id', (req, res, next) => {  DisplayBuildingById(req, res, next); });
+
+router.post('/add', passport.authenticate('jwt', {session: false}), (req, res, next) => {  AddBuilding(req, res, next); });
+
+router.put('/update/:id', passport.authenticate('jwt', {session: false}), (req, res, next) => {  UpdateBuilding(req, res, next); });
+
+router.delete('/delete/:id', passport.authenticate('jwt', {session: false}), (req, res, next) => {  DeleteBuilding(req, res, next); });
 
 export default router;

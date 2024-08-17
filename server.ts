@@ -6,7 +6,7 @@
 
 import app from './Server/Config/app.js';
 import debugLib from 'debug';
-const debug = debugLib('midterm,:server');
+const debug = debugLib('finalterm,:server');
 import http from 'http';
 import { HttpError } from 'http-errors';
 import { AddressInfo } from 'net';
