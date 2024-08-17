@@ -6,30 +6,27 @@
  */
 
 import express from 'express';
-import {
-  DisplayBuildingList,
-  DisplayBuildingById,
-  AddBuilding,
-  UpdateBuilding,
-  DeleteBuilding
-} from '../Controllers/buildings';
-
 const router = express.Router();
 
-// Route: GET /api/buildings
-router.get('/buildings', DisplayBuildingList);
+import { ProcessLogin, ProcessLogout, ProcessRegistration } from '../Controllers/auth';
 
-// Route: GET /api/buildings/:id
-router.get('/buildings/:id', DisplayBuildingById);
+/* List of Authentication Routes (endpoints) */
 
-// Route: POST /api/buildings
-router.post('/buildings', AddBuilding);
+/* Register User */
+router.post('/register', (req, res, next) => {  ProcessRegistration(req, res, next); });
 
-// Route: PUT /api/buildings/:id
-router.put('/buildings/:id', UpdateBuilding);
+/* Login User */
+router.post('/login', (req, res, next) => {  ProcessLogin(req, res, next); });
 
-// Route: DELETE /api/buildings/:id
-router.delete('/buildings/:id', DeleteBuilding);
+/* Logout User */
+router.get('/logout', (req, res, next) => {  ProcessLogout(req, res, next);});
+
 
 export default router;
+
+
+
+
+
+
 

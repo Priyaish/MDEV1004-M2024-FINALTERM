@@ -6,7 +6,7 @@
  */
 
 import { Request, Response, NextFunction } from 'express';
-import Building from '../Models/buildings'; 
+import Building from '../Models/building'; 
 import { SanitizeArray } from '../Util';
 
 /**

@@ -10,9 +10,11 @@ import { Schema, model, Document } from 'mongoose';
 // Define the IBuilding interface
 
 interface IBuilding extends Document {
+  id?: string; // Optional for the Mongoose document ID
+  buildingID: string; // Required as per the provided data
   name: string;
-  type: string;
-  dateBuilt: Date;
+  location: string; // Changed from 'type' to 'location'
+  dateBuilt: number; // Changed from 'yearBuilt' to 'dateBuilt'
   city: string;
   country: string;
   description: string;
@@ -25,9 +27,11 @@ interface IBuilding extends Document {
 // Define the building schema
 
 const buildingSchema = new Schema<IBuilding>({
+  id: { type: String },
+  buildingID: { type: String, required: true },
   name: { type: String, required: true },
-  type: { type: String, required: true },
-  dateBuilt: { type: Date, required: true },
+  location: { type: String, required: true }, // Changed from 'type' to 'location'
+  dateBuilt: { type: Number, required: true }, // Changed from 'yearBuilt' to 'dateBuilt'
   city: { type: String, required: true },
   country: { type: String, required: true },
   description: { type: String, required: true },
@@ -35,9 +39,8 @@ const buildingSchema = new Schema<IBuilding>({
   cost: { type: Number, required: true },
   website: { type: String, required: true },
   imageURL: { type: String, required: true }
-});
+}, { timestamps: true }); // Added timestamps to automatically manage createdAt and updatedAt fields
 
 const Building = model<IBuilding>('Building', buildingSchema);
 
 export default Building;
-

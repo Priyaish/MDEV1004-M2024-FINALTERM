@@ -4,12 +4,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const buildings_1 = require("../Controllers/buildings");
 const router = express_1.default.Router();
-router.get('/buildings', buildings_1.DisplayBuildingList);
-router.get('/buildings/:id', buildings_1.DisplayBuildingById);
-router.post('/buildings', buildings_1.AddBuilding);
-router.put('/buildings/:id', buildings_1.UpdateBuilding);
-router.delete('/buildings/:id', buildings_1.DeleteBuilding);
+const auth_1 = require("../Controllers/auth");
+router.post('/register', (req, res, next) => { (0, auth_1.ProcessRegistration)(req, res, next); });
+router.post('/login', (req, res, next) => { (0, auth_1.ProcessLogin)(req, res, next); });
+router.get('/logout', (req, res, next) => { (0, auth_1.ProcessLogout)(req, res, next); });
 exports.default = router;
 //# sourceMappingURL=index.js.map
